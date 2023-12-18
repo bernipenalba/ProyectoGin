@@ -1,0 +1,14 @@
+<!-- ventas_form.html -->
+{% extends 'base.html' %}
+
+{% block title %}Formulario de Venta{% endblock %}
+
+{% block header %}Formulario de Venta{% endblock %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar</button>
+    </form>
+{% endblock %}

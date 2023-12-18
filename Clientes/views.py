@@ -1,7 +1,18 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from Clientes.models import Cliente
+from django.shortcuts import render
 from Clientes.forms import ClienteForm
 
+def Cliente_form (request):
+    if request.method == 'POST':
+        form = ClienteForm(request.POST)
+        if form.is_valid():
+            form.save()
+            
+    else:
+        form = ClienteForm()
+    return render(request, 'clientes/clientes_form.html', {'form': form})
+
+
+"""
 def listar_clientes(request):
     clientes = Cliente.objects.all()
     return render(request, 'clientes/listar_clientes.html', {'clientes': clientes})
@@ -37,4 +48,4 @@ def eliminar_cliente(request, cliente_id):
         cliente.delete()
         return redirect('listar_clientes')
     return render(request, 'clientes/confirmar_eliminar_cliente.html', {'cliente': cliente})
-
+"""

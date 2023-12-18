@@ -1,3 +1,17 @@
+from django.shortcuts import render
+from Ventas.forms import VentasForm
+
+def Venta_form (request):
+    if request.method == 'POST':
+        form = VentasForm(request.POST)
+        if form.is_valid():
+            form.save()
+            
+    else:
+        form = VentasForm()
+    return render(request, 'ventas/ventas_form.html', {'form': form})
+
+"""
 from django.shortcuts import render, get_object_or_404, redirect
 from Ventas.models import Venta
 from Ventas.forms import VentaForm
@@ -33,3 +47,4 @@ def eliminar_venta(request, venta_id):
 
     return render(request, 'ventas/confirmar_eliminar_venta.html', {'venta': venta})
 
+"""

@@ -1,7 +1,26 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from Productos.models import Producto, Categoria
-from Productos.forms import ProductoForm, CategoriaForm
+from django.shortcuts import render
+from Productos.forms import ProductoForm
 
+def Producto_form (request):
+    if request.method == 'POST':
+        form = ProductoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            
+    else:
+        form = ProductoForm()
+    return render(request, 'productos/productos_form.html', {'form': form})
+
+
+
+
+
+
+#from django.shortcuts import render, get_object_or_404, redirect
+#from Productos.models import Producto, Categoria
+#from Productos.forms import ProductoForm, CategoriaForm
+
+"""
 def listar_productos(request):
     productos = Producto.objects.all()
     return render(request, 'productos/listar_productos.html', {'productos': productos})
@@ -51,4 +70,4 @@ def agregar_categoria(request):
     else:
         form = CategoriaForm()
     return render(request, 'productos/agregar_categoria.html', {'form': form})
-
+"""

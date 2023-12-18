@@ -1,0 +1,28 @@
+{% load static %}
+<!-- base.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mi Sitio{% endblock %}</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{% url 'Cliente_form' %}">Clientes</a></li>
+            <li><a href="{% url 'Producto_form' %}">Productos</a></li>
+            <li><a href="{% url 'Venta_form' %}">Ventas</a></li>
+        </ul>
+    </nav>
+    <header>
+        <h1>{% block header %}Mi Sitio{% endblock %}</h1>
+    </header>
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
+
+
+
